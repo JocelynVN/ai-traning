@@ -56,8 +56,10 @@ function buildBrandElements() {
     if (!s.querySelector('.slide-logo')) {
       const logo = document.createElement('img');
       logo.className = 'slide-logo';
-      logo.src = 'assets/wir-logo.png';
+      logo.src = 'assets/wir-logo.webp';
       logo.alt = 'WIR GROUP';
+      logo.loading = 'lazy';
+      logo.decoding = 'async';
       s.appendChild(logo);
     }
   });
@@ -92,7 +94,7 @@ function buildFooters() {
     const f = document.createElement('div');
     f.className = 'wfoot';
     f.innerHTML = '<span class="l"></span><span class="c"></span><span class="r"></span>';
-    f.children[0].innerHTML = '<img src="assets/wir-mark.png" class="foot-logo" alt="WIR"><span>' + label + '</span>';
+    f.children[0].innerHTML = '<img src="assets/wir-mark.webp" loading="lazy" decoding="async" class="foot-logo" alt="WIR"><span>' + label + '</span>';
     f.children[1].textContent = note;
     f.children[2].textContent = 'Trang ' + (k + 1) + ' / ' + total;
     s.appendChild(f);
@@ -320,6 +322,35 @@ document.addEventListener('click', function (e) {
   }
 });
 
+// Custom Instructions accordion toggle handler (OpenAI Academy pattern)
+document.addEventListener('click', function (e) {
+  const header = e.target.closest('.ci-acc-header');
+  if (!header) return;
+  const item = header.closest('.ci-acc-item');
+  if (!item) return;
+  const container = item.closest('.ci-accordion');
+  if (!container) return;
+
+  const isCurrentlyActive = item.classList.contains('active');
+  container.querySelectorAll('.ci-acc-item').forEach(function (it) {
+    it.classList.remove('active');
+    const icon = it.querySelector('.ci-acc-icon');
+    if (icon) icon.textContent = '+';
+  });
+
+  if (!isCurrentlyActive) {
+    item.classList.add('active');
+    const icon = item.querySelector('.ci-acc-icon');
+    if (icon) icon.textContent = '–';
+  } else {
+    // If clicking an active item in single-select accordion, keep it open (or re-open)
+    item.classList.add('active');
+    const icon = item.querySelector('.ci-acc-icon');
+    if (icon) icon.textContent = '–';
+  }
+});
+
+
 function initDeck() {
   slides = [...document.querySelectorAll('.slide')];
   numEl = document.getElementById('pnum');
@@ -337,11 +368,14 @@ function initDeck() {
 
 async function loadSlides(urls) {
   const stage = document.getElementById('stage');
-  for (const url of urls) {
-    const res = await fetch(url + '?_t=' + Date.now());
-    if (!res.ok) throw new Error('Không tải được slide: ' + url);
-    stage.insertAdjacentHTML('beforeend', (await res.text()).trim());
-  }
+  const pages = await Promise.all(
+    urls.map(async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Không tải được slide: ' + url);
+      return res.text();
+    })
+  );
+  stage.innerHTML = pages.map((p) => p.trim()).join('');
   initDeck();
 }
 

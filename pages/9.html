@@ -2,42 +2,110 @@
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">Quy ước Viết Prompt Hiệu quả — Khung Chuẩn C-R-T-F</h1>
+      <h1 class="title">Cấu Trúc Prompt Chuẩn OpenAI: 3 Thành Phần Cốt Lõi</h1>
     </div>
     <div class="body">
-      <div class="or-split" style="grid-template-columns:38% 62%;gap:18px;align-items:start">
-        <div class="or-left">
-          <ul>
-            <li style="margin-bottom:8px"><b>1. Context (Bối cảnh):</b> Bạn là ai, phòng ban nào, thông tin sản phẩm và
-              tình huống thực tế của khách hàng/dự án.</li>
-            <li style="margin-bottom:8px"><b>2. Role (Vai trò):</b> Định vị chuyên môn cho AI (VD: <i>Chuyên viên Da
-                liễu Elasten, Trưởng phòng Marketing, Chuyên viên CSKH</i>...).</li>
-            <li style="margin-bottom:8px"><b>3. Task (Nhiệm vụ):</b> Nêu rõ yêu cầu cụ thể cần làm (soạn kịch bản phản
-              hồi, phân tích bảng tính, tóm tắt ý chính...).</li>
-            <li style="margin-bottom:8px"><b>4. Format (Định dạng):</b> Chỉ định hình thức đầu ra: <i>3 tin nhắn Zalo
-                ngắn gọn, bảng so sánh Markdown, email xin duyệt</i>...</li>
-          </ul>
-          <div class="callout" style="padding:10px 14px;font-size:12.5px;margin-top:12px">
-            <span class="ci" data-i="lightbulb"></span>
-            <div><b>Bí quyết thực chiến:</b> Cung cấp đủ 4 trụ cột <b>[C] [R] [T] [F]</b> giúp loại bỏ 90% nguy cơ AI
-              trả lời lan man hoặc xuất hiện ảo giác thông tin.</div>
+      <!-- 3 Khối dòng chảy chuẩn OpenAI Academy -->
+      <div style="display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;align-items:center;gap:6px;margin-bottom:14px">
+        <!-- Khối 1: Task -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #0284c7;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="pen" style="color:#fff"></span>
           </div>
-          <div class="tag2" style="margin-top:8px"><span class="ci" data-i="sparkles"></span> Khung quy ước chuẩn áp
-            dụng xuyên suốt các bài tập WIR</div>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#0284c7">Task (Nhiệm vụ)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Điều bạn muốn ChatGPT thực hiện</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Soạn email mở đầu B2B"
+          </div>
         </div>
 
-        <div class="card card-image"
-          style="padding:10px;background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,0.06)">
-          <img src="assets/crtf-pillars.png"
-            style="width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--line)"
-            alt="Khung quy ước C-R-T-F: Context, Role, Task, Format">
-          <div
-            style="margin-top:8px;padding:4px 6px;font-size:11.5px;color:var(--muted2);text-align:center;font-weight:600">
-            Khung C-R-T-F: 4 trụ cột cốt lõi để giao việc cho AI rõ ràng, chính xác &amp; hiệu quả (Click để phóng to)
+        <!-- Mũi tên 1 -->
+        <div style="text-align:center;color:var(--muted2);font-size:18px;font-weight:800">➔</div>
+
+        <!-- Khối 2: Context -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #4f46e5;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="search" style="color:#fff"></span>
           </div>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#4f46e5">Context (Bối cảnh)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Thông tin nền tảng AI cần cân nhắc</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Sản phẩm Elasten Đức, gửi Chủ Spa"
+          </div>
+        </div>
+
+        <!-- Mũi tên 2 -->
+        <div style="text-align:center;color:var(--muted2);font-size:18px;font-weight:800">➔</div>
+
+        <!-- Khối 3: Expectation -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #16a34a;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="check" style="color:#fff"></span>
+          </div>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#16a34a">Expectation (Kỳ vọng)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Hình thức, giọng điệu & tiêu chuẩn đầu ra</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Dưới 180 từ, lịch thiệp, có CTA"
+          </div>
+        </div>
+      </div>
+
+      <!-- Bảng đối chiếu chi tiết theo giáo trình OpenAI Academy -->
+      <div class="card" style="padding:0;background:#fff;overflow:hidden;border:1px solid var(--line)">
+        <table style="width:100%;border-collapse:collapse;font-size:11.8px;text-align:left">
+          <thead>
+            <tr style="background:#0f172a;color:#fff">
+              <th style="padding:9px 14px;width:18%;font-weight:700">Thành phần</th>
+              <th style="padding:9px 14px;width:34%;font-weight:700">Chi tiết cần cân nhắc (Details)</th>
+              <th style="padding:9px 14px;width:48%;font-weight:700">Ví dụ thực tế tại WIR Group (Examples)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:10px 14px;font-weight:700;color:#0284c7">
+                <span class="ci" data-i="pen"></span> Task
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Hành động cốt lõi bạn muốn ChatGPT thực thi.
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Soạn email mở đầu B2B"</i> · <i>"Tóm tắt biên bản họp tuần"</i> · <i>"Lập checklist CSKH Spa"</i>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);background:#fafafa">
+              <td style="padding:10px 14px;font-weight:700;color:#4f46e5">
+                <span class="ci" data-i="search"></span> Context
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Người nhận là ai, tại sao cần làm, người đọc đã biết gì, tài liệu/chính sách WIR đã duyệt, ranh giới an toàn.
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Người nhận: Chủ Spa/Clinic"</i> · <i>"Sản phẩm: Collagen Elasten số 1 tại Đức"</i> · <i>"Chính sách chiết khấu 35%"</i> · <i>"Cấm tự bịa claim y tế"</i>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 14px;font-weight:700;color:#16a34a">
+                <span class="ci" data-i="check"></span> Expectation
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Định dạng (Format), Độ dài (Length), Giọng điệu (Tone) và Mức độ chi tiết (Level of detail).
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Tối đa 180 từ"</i> · <i>"Văn phong chuyên nghiệp B2B, tôn trọng đối tác"</i> · <i>"Có tiêu đề ngắn và CTA hẹn demo 15 phút"</i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Callout -->
+      <div class="callout" style="padding:10px 14px;margin-top:12px;font-size:12px">
+        <span class="ci" data-i="lightbulb"></span>
+        <div>
+          <b>Giáo trình chính thức OpenAI Academy (AI Foundations):</b>
+          Cấu trúc 3 phần <b>Task ➔ Context ➔ Expectation</b> là phương pháp chuẩn mực, tự nhiên và dễ nhớ nhất, giúp người dùng kiểm soát 100% chất lượng bản nháp của ChatGPT.
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="brand">WIR GROUP · <b>AI TRAINING</b></span><span>9</span></div>
 </section>

@@ -1,73 +1,60 @@
-<section class="slide">
+<section class="slide dense">
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">Mẫu Thực Chiến 1: Bản AGENT.md (Hồ Sơ Trợ Lý AI) Cho WIR Group</h1>
+      <h1 class="title">Mẫu Chỉ Dẫn Hệ Thống (Instructions) Chuẩn WIR Group</h1>
     </div>
     <div class="body">
-      <div class="or-split" style="grid-template-columns:55% 45%;gap:16px;align-items:start">
-        <div class="or-left">
-          <div class="card"
-            style="padding:10px 12px;background:#fff;border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,0.04)">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-              <span style="font-size:11px;font-weight:800;color:var(--wir-navy)"><span class="ci" data-i="file"></span>
-                Nội Dung File AGENT.md (Mẫu Chuẩn)</span>
-              <button class="btn-copy" data-copy-target="agent-md-sample"
-                style="cursor:pointer;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">
-                Sao chép mẫu này
-              </button>
-            </div>
-
-            <div id="agent-md-sample"
-              style="background:#F8FAFC;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:9.5px;line-height:1.45;color:var(--ink);max-height:275px;overflow-y:auto;white-space:pre-wrap">
-              1. VAI TRÒ CỦA BẠN:
-              Bạn là Chuyên viên Hỗ trợ Phát triển Kinh doanh B2B cao cấp của WIR Group, đại diện cho thương hiệu
-              Collagen Elasten CHLB Đức tại Việt Nam.
-
-              2. BỐI CẢNH DOANH NGHIỆP:
-              - Đơn vị: WIR Group — Nhà phân phối độc quyền Collagen Elasten.
-              - Sản phẩm: Collagen Elasten dạng uống (hộp 28 ống), công thức độc quyền [HC]-Complex, kiểm chứng lâm sàng
-              tại ĐH Hamburg và Viện Dermatest.
-              - Đối tác mục tiêu: Ban Giám đốc các chuỗi Spa, Thẩm mỹ viện công nghệ cao và Clinic da liễu.
-
-              3. MỤC TIÊU CÔNG VIỆC:
-              - Hỗ trợ xây dựng thư ngỏ, kịch bản đàm phán hợp tác đưa Elasten vào liệu trình phục hồi sau laser/xâm
-              lấn.
-              - Tối ưu hóa giá trị trọn đời (LTV) và doanh thu dịch vụ cho đối tác Spa.
-
-              4. PHONG CÁCH GIAO TIẾP:
-              - Lịch sự, trang trọng, văn phong Executive, tư duy hợp tác Win-Win.
-              - Mọi lập luận đều dựa trên y khoa, không dùng từ sáo rỗng hoặc quảng cáo phóng đại.</div>
+      <div class="or-split" style="grid-template-columns:57% 43%;gap:18px;align-items:start">
+        <div class="card" style="padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:14.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:6px"><span class="ci" data-i="file"></span> Nội dung chỉ dẫn mẫu WIR</span>
+            <button class="btn-copy" data-copy-target="agents-md-sample"
+              style="cursor:pointer;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy);padding:4px 10px;border-radius:6px;font-size:11.5px;font-weight:700">Sao chép mẫu</button>
           </div>
+          <div id="agents-md-sample" style="background:#F8FAFC;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-family:system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;font-size:12.5px;line-height:1.52;color:var(--ink);white-space:pre-wrap"><b># 1. Bối cảnh công việc (Work context)</b>
+Hỗ trợ đội ngũ WIR Group xử lý công việc hàng ngày và soạn thảo văn bản B2B ở trạng thái bản nháp.
+
+<b># 2. Phong cách &amp; Giọng điệu (Tone &amp; style)</b>
+- Phản hồi chuyên nghiệp, rõ ràng, súc tích bằng tiếng Việt chuẩn mực.
+- Tránh từ ngữ phóng đại, văn mẫu sáo rỗng hoặc hứa hẹn kết quả.
+
+<b># 3. Hỗ trợ soạn thảo (Writing support)</b>
+- Khi viết email/văn bản: Giữ giọng điệu ấm áp, trực tiếp và trau chuốt.
+- Luôn bám sát mục tiêu, đối tượng người nhận và dữ kiện WIR đã cấp.
+
+<b># 4. Tham vấn ra quyết định (Decision support)</b>
+- Khi xin lời khuyên: Đưa khuyến nghị rõ ràng, phân tích điểm đánh đổi (trade-offs) và nêu rõ giả định.
+
+<b># 5. Độ chính xác &amp; Ranh giới (Accuracy &amp; Boundaries)</b>
+- Khi thiếu dữ kiện: Ghi [CẦN XÁC NHẬN], tuyệt đối không đoán mò.
+- Không tự tạo số liệu chiết khấu/giá bán; không đăng bài thay người dùng.</div>
         </div>
 
         <div class="or-right">
-          <div class="card"
-            style="padding:12px 14px;background:#F8FAFC;border:1px solid var(--line);margin-bottom:10px">
-            <div
-              style="font-size:12px;font-weight:800;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:6px">
-              <span class="ci" data-i="process"></span> 3 Bước Cài Đặt Vào ChatGPT (No-Tech)
+          <div class="card" style="padding:15px 18px;background:#F8FAFC;border:1px solid var(--line);border-radius:10px">
+            <h3 style="font-size:14.5px;color:var(--ink);margin:0 0 10px"><span class="ci" data-i="process"></span> Hai nơi áp dụng</h3>
+            
+            <div style="background:#fff;border:1px solid var(--line);padding:11px 14px;border-radius:8px;margin-bottom:10px">
+              <b style="font-size:13px;color:var(--wir-navy)">CUSTOM INSTRUCTIONS (CÁ NHÂN)</b>
+              <p style="font-size:12.8px;line-height:1.48;margin:5px 0 0;color:var(--body)">Dán vào ô phản hồi trong <i>Settings &gt; Personalization</i> để ChatGPT luôn ghi nhớ phong cách khi trả lời bạn.</p>
             </div>
-
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Bước 1:</b> Mở ChatGPT, bấm vào tên tài khoản cá nhân ở góc dưới bên trái.
-            </li>
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Bước 2:</b> Chọn mục <b>Tùy chỉnh ChatGPT (Custom Instructions)</b>.
-            </li>
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Bước 3:</b> Bấm <b>Sao chép</b> nội dung bên cạnh &rarr; Dán vào ô và bấm <b>Lưu (Save)</b>.
-            </li>
+            
+            <div style="background:#fff;border:1px solid var(--line);padding:11px 14px;border-radius:8px">
+              <b style="font-size:13px;color:#0284c7">DỰ ÁN CHATGPT / CUSTOM GPTS (NHÓM)</b>
+              <p style="font-size:12.8px;line-height:1.48;margin:5px 0 0;color:var(--body)">Dán vào ô <b>Project Instructions</b> để áp dụng đồng bộ cho mọi cuộc hội thoại trong dự án của phòng ban.</p>
+            </div>
           </div>
 
-          <div class="callout" style="padding:8px 12px;font-size:11px">
-            <span class="ci" data-i="check"></span>
-            <div><b>Kết quả ngay lập tức:</b> Từ nay, bất kể khi nào bạn mở một cuộc trò chuyện mới, ChatGPT đều <b>tự
-                động nhập vai</b> Giám đốc B2B của Elasten mà bạn không cần giải thích lại một lời nào!</div>
+          <div class="callout" style="padding:11px 16px;font-size:12.8px;margin-top:12px;border-radius:8px">
+            <span class="ci" data-i="lightbulb"></span>
+            <div><b>Kiểm thử:</b> Chạy thử một tác vụ quen thuộc, xem phần nào ChatGPT chưa tuân thủ để tinh chỉnh chỉ dẫn ngắn gọn và sắc nét hơn.</div>
           </div>
+
+          <div class="tag2" style="margin-top:12px;font-size:12px"><span class="ci" data-i="info"></span> Chỉ dẫn hệ thống không thay thế dữ kiện riêng của từng nhiệm vụ</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="brand">WIR GROUP · <b>AI TRAINING</b></span><span>16</span></div>
 </section>
+

@@ -2,98 +2,151 @@
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">AGENT.md Là Gì? Vì Sao Người Đi Làm Cần Nó?</h1>
+      <h1 class="title">Cài Đặt Cá Nhân Hóa (Custom Instructions) Chuẩn OpenAI</h1>
     </div>
     <div class="body">
-      <div class="or-split" style="grid-template-columns:46% 54%;gap:16px;align-items:start">
+      <div class="or-split" style="grid-template-columns:39% 61%;gap:18px;align-items:start">
         <div class="or-left">
-          <div class="card" style="padding:14px 16px;background:#fff;border-color:var(--line);margin-bottom:10px">
-            <div
-              style="font-size:12px;font-weight:800;color:var(--wir-navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">
-              <span class="ci" data-i="users"></span> Định nghĩa từ tài liệu OpenAI:
-            </div>
-            <p style="font-size:11.5px;line-height:1.45;color:var(--body);margin:0">
-              <b>AGENT.md</b> là bản ghi chú văn bản lưu giữ toàn bộ <b>Chỉ dẫn cốt lõi (Instructions)</b> của bạn dành
-              cho ChatGPT. Nó đóng vai trò như một <b>Bản mô tả công việc (Job Description)</b> để AI luôn nhớ mình đang
-              làm việc cho ai và vì mục tiêu gì.
-            </p>
+          <div class="card" style="padding:12px 14px;border-left:4px solid var(--wir-navy);border-radius:10px">
+            <h3 style="font-size:14.5px;margin:0 0 5px"><span class="ci" data-i="users"></span> 1. Cho cá nhân (Custom Instructions)</h3>
+            <p style="font-size:13px;line-height:1.48;margin:0;color:var(--body)">Vào <i>Settings &gt; Personalization &gt; Custom instructions</i>: Thiết lập 1 lần, ChatGPT sẽ tự động nhớ vai trò và phong cách cho mọi đoạn chat cá nhân.</p>
           </div>
 
-          <div class="card" style="padding:14px 16px;background:#fff;border-color:var(--line)">
-            <div
-              style="font-size:12px;font-weight:800;color:var(--wir-navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">
-              <span class="ci" data-i="target"></span> 3 Lợi ích thực tế cho dân văn phòng:
+          <div class="card" style="padding:12px 14px;border-left:4px solid #0284c7;margin-top:10px;border-radius:10px">
+            <h3 style="font-size:14.5px;margin:0 0 5px"><span class="ci" data-i="folder"></span> 2. Cho phòng ban (ChatGPT Projects / GPTs)</h3>
+            <p style="font-size:13px;line-height:1.48;margin:0;color:var(--body)">Vào <b>Project Instructions</b> trong Dự án WIR: Đồng bộ quy chuẩn phản hồi và tài liệu tri thức dùng chung cho cả nhóm.</p>
+          </div>
+
+          <div class="card" style="padding:11px 14px;margin-top:10px;background:#F8FAFC;border:1px solid var(--line);border-radius:10px">
+            <h4 style="font-size:13.5px;margin:0 0 6px;color:var(--ink)">2 Ô Thiết Lập Cốt Lõi Của ChatGPT:</h4>
+            <div style="font-size:12px;line-height:1.45;margin-bottom:5px;color:var(--body)">
+              <b>Ô 1 (Về bạn):</b> <i>"What would you like ChatGPT to know about you?"</i><br>
+              ➔ Nêu vai trò chuyên môn, phòng ban, đối tượng phục vụ tại WIR.
             </div>
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Không cần nhắc lại thông tin:</b> Mở cửa sổ chat lên là AI tự biết bạn là nhân viên WIR Group, đang bán
-              Elasten, không cần gõ giải thích lại từ đầu.
-            </li>
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Đồng bộ chuẩn mực cả phòng ban:</b> Cả team cùng dùng chung 1 file AGENT.md &rarr; Mọi văn bản xuất ra
-              đều đồng đều về chất lượng và hình ảnh thương hiệu.
-            </li>
-            <li style="font-size:11px;padding:3px 0 2px 18px">
-              <b>Tránh câu trả lời sáo rỗng:</b> AI không trả lời như một người lạ trên mạng, mà tư duy như một cộng sự
-              am hiểu sâu sắc sản phẩm của công ty.
-            </li>
+            <div style="font-size:12px;line-height:1.45;color:var(--body)">
+              <b>Ô 2 (Cách phản hồi):</b> <i>"How would you like ChatGPT to respond?"</i><br>
+              ➔ Yêu cầu phong cách, cấu trúc câu trả lời, ranh giới an toàn.
+            </div>
+          </div>
+
+          <div class="callout" style="padding:9px 14px;font-size:12.5px;margin-top:10px;border-radius:8px">
+            <span class="ci" data-i="sparkles"></span>
+            <div><b>Nguyên tắc:</b> Chỉ lưu quy ước lặp lại dài hạn. Bối cảnh riêng của việc cụ thể luôn đặt trong <b>Prompt T-C-E</b>.</div>
           </div>
         </div>
 
         <div class="or-right">
-          <div class="card" style="padding:14px 16px;background:#F8FAFC;border:1px solid var(--line)">
-            <div
-              style="font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between">
-              <span><span class="ci" data-i="layers"></span> 4 Câu Hỏi Vàng Cần Trả Lời Trong AGENT.md</span>
-              <span style="font-size:10px;color:var(--wir-navy);font-weight:700">Công Thức OpenAI</span>
+          <div class="card" style="padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.04)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+              <h3 style="font-size:15px;font-weight:800;color:var(--ink);margin:0">Example custom instructions</h3>
+              <span style="font-size:11px;font-weight:700;color:var(--wir-navy);background:var(--wir-navy-t);padding:3px 8px;border-radius:4px">Khóa học OpenAI</span>
             </div>
+            <p style="font-size:12px;color:var(--muted);margin:0 0 10px;font-style:italic">Select each item to view an example (Bấm vào từng mục để xem mẫu):</p>
 
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div
-                style="background:#fff;border:1px solid var(--line);border-left:3px solid var(--wir-navy);padding:8px 10px;border-radius:6px">
-                <div style="font-size:11px;font-weight:800;color:var(--wir-navy)">1. BẠN LÀ AI? (VAI TRÒ)</div>
-                <div style="font-size:10.5px;color:var(--body);line-height:1.35;margin-top:2px">
-                  <i>"Bạn là Chuyên viên Phát triển Kinh doanh B2B cao cấp của thương hiệu Elasten."</i>
+            <div class="ci-accordion" id="ci-accordion-list">
+              <!-- Item 1: Work context -->
+              <div class="ci-acc-item active">
+                <div class="ci-acc-header">
+                  <span class="ci-acc-title">Work context <span style="font-weight:normal;color:var(--muted);font-size:11.5px">— Bối cảnh công việc</span></span>
+                  <span class="ci-acc-icon">–</span>
+                </div>
+                <div class="ci-acc-body">
+                  <div class="ci-acc-quote">“I work in [role/team/industry]. Tailor examples and suggestions to my day-to-day work, stakeholders, and business priorities.”</div>
+                  <div class="ci-acc-wir">
+                    <b>Gợi ý WIR:</b> “Tôi làm việc tại [vai trò/bộ phận] thuộc WIR Group. Hãy điều chỉnh ví dụ và gợi ý sát với công việc hàng ngày, đối tác và ưu tiên kinh doanh.”
+                  </div>
+                  <div style="margin-top:8px;display:flex;gap:8px">
+                    <button class="btn-copy" data-copy-target="ci-copy-wir-1" style="cursor:pointer;font-size:11px;font-weight:700;padding:4px 9px;border-radius:5px;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy)">Sao chép mẫu WIR</button>
+                    <button class="btn-copy" data-copy-target="ci-copy-en-1" style="cursor:pointer;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted2)">Copy English</button>
+                  </div>
+                  <div id="ci-copy-wir-1" style="display:none">Tôi làm việc tại [vai trò/bộ phận] thuộc WIR Group. Hãy điều chỉnh ví dụ và gợi ý sát với công việc hàng ngày, đối tác và ưu tiên kinh doanh.</div>
+                  <div id="ci-copy-en-1" style="display:none">I work in [role/team/industry]. Tailor examples and suggestions to my day-to-day work, stakeholders, and business priorities.</div>
                 </div>
               </div>
 
-              <div
-                style="background:#fff;border:1px solid var(--line);border-left:3px solid #0284c7;padding:8px 10px;border-radius:6px">
-                <div style="font-size:11px;font-weight:800;color:#0284c7)">2. BẠN LÀM VIỆC Ở ĐÂU? (BỐI CẢNH DOANH
-                  NGHIỆP)</div>
-                <div style="font-size:10.5px;color:var(--body);line-height:1.35;margin-top:2px">
-                  <i>"WIR Group phân phối độc quyền Collagen Elasten CHLB Đức (hộp 28 ống, công thức [HC]-Complex)."</i>
+              <!-- Item 2: Tone and style -->
+              <div class="ci-acc-item">
+                <div class="ci-acc-header">
+                  <span class="ci-acc-title">Tone and style <span style="font-weight:normal;color:var(--muted);font-size:11.5px">— Phong cách &amp; Giọng điệu</span></span>
+                  <span class="ci-acc-icon">+</span>
+                </div>
+                <div class="ci-acc-body">
+                  <div class="ci-acc-quote">“Keep responses professional, clear, and concise. Use plain English for a global business audience.”</div>
+                  <div class="ci-acc-wir">
+                    <b>Gợi ý WIR:</b> “Giữ câu trả lời luôn chuyên nghiệp, rõ ràng và ngắn gọn. Dùng tiếng Việt chuẩn mực, lịch sự, phù hợp môi trường kinh doanh B2B.”
+                  </div>
+                  <div style="margin-top:8px;display:flex;gap:8px">
+                    <button class="btn-copy" data-copy-target="ci-copy-wir-2" style="cursor:pointer;font-size:11px;font-weight:700;padding:4px 9px;border-radius:5px;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy)">Sao chép mẫu WIR</button>
+                    <button class="btn-copy" data-copy-target="ci-copy-en-2" style="cursor:pointer;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted2)">Copy English</button>
+                  </div>
+                  <div id="ci-copy-wir-2" style="display:none">Giữ câu trả lời luôn chuyên nghiệp, rõ ràng và ngắn gọn. Dùng tiếng Việt chuẩn mực, lịch sự, phù hợp môi trường kinh doanh B2B.</div>
+                  <div id="ci-copy-en-2" style="display:none">Keep responses professional, clear, and concise. Use plain English for a global business audience.</div>
                 </div>
               </div>
 
-              <div
-                style="background:#fff;border:1px solid var(--line);border-left:3px solid #16a34a;padding:8px 10px;border-radius:6px">
-                <div style="font-size:11px;font-weight:800;color:#16a34a">3. KHÁCH HÀNG CỦA BẠN LÀ AI? (ĐỐI TƯỢNG PHỤC
-                  VỤ)</div>
-                <div style="font-size:10.5px;color:var(--body);line-height:1.35;margin-top:2px">
-                  <i>"Chủ Spa &amp; Thẩm mỹ viện cao cấp quan tâm đến phục hồi sau laser &amp; tăng doanh thu dịch
-                    vụ."</i>
+              <!-- Item 3: Writing support -->
+              <div class="ci-acc-item">
+                <div class="ci-acc-header">
+                  <span class="ci-acc-title">Writing support <span style="font-weight:normal;color:var(--muted);font-size:11.5px">— Hỗ trợ soạn thảo</span></span>
+                  <span class="ci-acc-icon">+</span>
+                </div>
+                <div class="ci-acc-body">
+                  <div class="ci-acc-quote">“When helping me write emails, messages, or documents, make the tone warm, direct, and polished without sounding overly formal.”</div>
+                  <div class="ci-acc-wir">
+                    <b>Gợi ý WIR:</b> “Khi hỗ trợ viết email hoặc văn bản, hãy giữ giọng điệu ấm áp, trực tiếp và trau chuốt mà không bị quá cứng nhắc hay sáo rỗng.”
+                  </div>
+                  <div style="margin-top:8px;display:flex;gap:8px">
+                    <button class="btn-copy" data-copy-target="ci-copy-wir-3" style="cursor:pointer;font-size:11px;font-weight:700;padding:4px 9px;border-radius:5px;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy)">Sao chép mẫu WIR</button>
+                    <button class="btn-copy" data-copy-target="ci-copy-en-3" style="cursor:pointer;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted2)">Copy English</button>
+                  </div>
+                  <div id="ci-copy-wir-3" style="display:none">Khi hỗ trợ viết email hoặc văn bản, hãy giữ giọng điệu ấm áp, trực tiếp và trau chuốt mà không bị quá cứng nhắc hay sáo rỗng.</div>
+                  <div id="ci-copy-en-3" style="display:none">When helping me write emails, messages, or documents, make the tone warm, direct, and polished without sounding overly formal.</div>
                 </div>
               </div>
 
-              <div
-                style="background:#fff;border:1px solid var(--line);border-left:3px solid #9333ea;padding:8px 10px;border-radius:6px">
-                <div style="font-size:11px;font-weight:800;color:#9333ea">4. BẠN NÓI CHUYỆN BẰNG GIỌNG ĐIỆU NÀO? (PHONG
-                  CÁCH)</div>
-                <div style="font-size:10.5px;color:var(--body);line-height:1.35;margin-top:2px">
-                  <i>"Lịch sự, trang trọng, lập luận bằng y khoa, luôn đề xuất giải pháp Win-Win."</i>
+              <!-- Item 4: Decision support -->
+              <div class="ci-acc-item">
+                <div class="ci-acc-header">
+                  <span class="ci-acc-title">Decision support <span style="font-weight:normal;color:var(--muted);font-size:11.5px">— Tham vấn ra quyết định</span></span>
+                  <span class="ci-acc-icon">+</span>
+                </div>
+                <div class="ci-acc-body">
+                  <div class="ci-acc-quote">“When I ask for advice, give a clear recommendation, explain the tradeoffs, and call out any assumptions.”</div>
+                  <div class="ci-acc-wir">
+                    <b>Gợi ý WIR:</b> “Khi tôi xin lời khuyên, hãy đưa ra khuyến nghị rõ ràng, phân tích các điểm đánh đổi (trade-offs) và nêu rõ các giả định cơ sở.”
+                  </div>
+                  <div style="margin-top:8px;display:flex;gap:8px">
+                    <button class="btn-copy" data-copy-target="ci-copy-wir-4" style="cursor:pointer;font-size:11px;font-weight:700;padding:4px 9px;border-radius:5px;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy)">Sao chép mẫu WIR</button>
+                    <button class="btn-copy" data-copy-target="ci-copy-en-4" style="cursor:pointer;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted2)">Copy English</button>
+                  </div>
+                  <div id="ci-copy-wir-4" style="display:none">Khi tôi xin lời khuyên, hãy đưa ra khuyến nghị rõ ràng, phân tích các điểm đánh đổi (trade-offs) và nêu rõ các giả định cơ sở.</div>
+                  <div id="ci-copy-en-4" style="display:none">When I ask for advice, give a clear recommendation, explain the tradeoffs, and call out any assumptions.</div>
+                </div>
+              </div>
+
+              <!-- Item 5: Accuracy and clarity -->
+              <div class="ci-acc-item">
+                <div class="ci-acc-header">
+                  <span class="ci-acc-title">Accuracy and clarity <span style="font-weight:normal;color:var(--muted);font-size:11.5px">— Độ chính xác &amp; Minh bạch</span></span>
+                  <span class="ci-acc-icon">+</span>
+                </div>
+                <div class="ci-acc-body">
+                  <div class="ci-acc-quote">“If something is uncertain, say so clearly. Do not guess, and tell me what information would make the answer stronger.”</div>
+                  <div class="ci-acc-wir">
+                    <b>Gợi ý WIR:</b> “Nếu dữ kiện chưa chắc chắn, hãy nói rõ ràng. Tuyệt đối không đoán mò, và cho tôi biết cần thêm thông tin gì để câu trả lời vững chắc hơn.”
+                  </div>
+                  <div style="margin-top:8px;display:flex;gap:8px">
+                    <button class="btn-copy" data-copy-target="ci-copy-wir-5" style="cursor:pointer;font-size:11px;font-weight:700;padding:4px 9px;border-radius:5px;background:var(--wir-navy-t);border:1px solid var(--wir-navy-line);color:var(--wir-navy)">Sao chép mẫu WIR</button>
+                    <button class="btn-copy" data-copy-target="ci-copy-en-5" style="cursor:pointer;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted2)">Copy English</button>
+                  </div>
+                  <div id="ci-copy-wir-5" style="display:none">Nếu dữ kiện chưa chắc chắn, hãy nói rõ ràng. Tuyệt đối không đoán mò, và cho tôi biết cần thêm thông tin gì để câu trả lời vững chắc hơn.</div>
+                  <div id="ci-copy-en-5" style="display:none">If something is uncertain, say so clearly. Do not guess, and tell me what information would make the answer stronger.</div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="callout" style="padding:6px 12px;font-size:11px;margin-top:8px">
-            <span class="ci" data-i="sparkles"></span>
-            <div><b>Áp dụng ngay:</b> Trong ChatGPT, bạn chỉ cần dán nội dung này vào ô <b>Custom Instructions</b> (Tùy
-              chỉnh ChatGPT) là mọi cuộc trò chuyện từ nay về sau đều tự động được áp dụng!</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="brand">WIR GROUP · <b>AI TRAINING</b></span><span>13</span></div>
 </section>

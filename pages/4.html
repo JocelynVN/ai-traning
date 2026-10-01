@@ -2,44 +2,48 @@
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">Những Rủi ro Quan trọng khi Sử dụng AI</h1>
+      <h1 class="title">Ba Rủi Ro Cần Kiểm Soát Khi Dùng AI</h1>
     </div>
     <div class="body">
-      <div class="grid g3">
-        <div class="card warn">
-          <div class="ic"><span class="ci" data-i="shield" style="color:var(--no)"></span></div>
-          <h3 style="margin-top:12px;color:var(--no)">1. Rò rỉ Dữ liệu &amp; Bảo mật</h3>
-          <li><b>Bản chất:</b> AI công cộng có thể lưu vết &amp; dùng dữ liệu đầu vào để huấn luyện.</li>
-          <li><b>Rủi ro:</b> Thất thoát bí mật kinh doanh (giá vốn, hợp đồng, bảng lương, Data KH).</li>
-          <div class="tag2" style="color:var(--no);border-color:var(--no-line)"><span class="ci" data-i="ban"
-              style="color:var(--no)"></span> Ẩn danh / thay thế toàn bộ thông tin nhạy cảm</div>
+      <div class="or-split" style="grid-template-columns:38% 62%;gap:18px;align-items:start">
+        <div class="or-left">
+          <div class="card warn" style="padding:12px 14px">
+            <h3 style="color:var(--no);font-size:13.5px;margin-bottom:6px"><span class="ci" data-i="shield" style="color:var(--no)"></span> 1. Dữ liệu &amp; Bảo mật</h3>
+            <li style="font-size:11.8px;line-height:1.45"><b>Rủi ro:</b> Lộ giá vốn, hợp đồng, bảng lương hoặc thông tin khách hàng.</li>
+            <div class="tag2" style="color:var(--no);border-color:var(--no-line);font-size:11px;margin-top:6px"><span class="ci" data-i="ban" style="color:var(--no)"></span> Ẩn danh hóa 100% dữ liệu nhạy cảm</div>
+          </div>
+
+          <div class="card warn" style="padding:12px 14px;margin-top:8px">
+            <h3 style="color:var(--no);font-size:13.5px;margin-bottom:6px"><span class="ci" data-i="search" style="color:var(--no)"></span> 2. Ảo giác AI (Hallucination)</h3>
+            <li style="font-size:11.8px;line-height:1.45"><b>Rủi ro:</b> AI tự bịa thông tin, văn bản luật hoặc tính toán sai lệch.</li>
+            <div class="tag2" style="color:var(--no);border-color:var(--no-line);font-size:11px;margin-top:6px"><span class="ci" data-i="ban" style="color:var(--no)"></span> Luôn kiểm chứng đối chiếu số liệu gốc</div>
+          </div>
+
+          <div class="card warn" style="padding:12px 14px;margin-top:8px">
+            <h3 style="color:var(--no);font-size:13.5px;margin-bottom:6px"><span class="ci" data-i="eye" style="color:var(--no)"></span> 3. Trách nhiệm kiểm duyệt</h3>
+            <li style="font-size:11.8px;line-height:1.45"><b>Rủi ro:</b> Nhân viên chịu trách nhiệm 100% về văn bản phát hành.</li>
+            <div class="tag2" style="color:var(--no);border-color:var(--no-line);font-size:11px;margin-top:6px"><span class="ci" data-i="ban" style="color:var(--no)"></span> Con người duyệt đầu ra cuối cùng</div>
+          </div>
+
+          <div class="callout" style="background:var(--no-bg);border-color:var(--no-line);border-left-color:var(--no);margin-top:10px;padding:9px 12px;font-size:11.5px">
+            <span class="ci" data-i="ban" style="color:var(--no)"></span>
+            <div><b>Quy tắc 3 Không:</b> Không nhập tin mật · Không tin số liệu chưa kiểm chứng · Không gửi khi chưa duyệt.</div>
+          </div>
         </div>
 
-        <div class="card warn">
-          <div class="ic"><span class="ci" data-i="search" style="color:var(--no)"></span></div>
-          <h3 style="margin-top:12px;color:var(--no)">2. Ảo giác AI (Hallucination)</h3>
-          <li><b>Bản chất:</b> AI có thể tự bịa ra thông tin, số liệu &amp; trích dẫn với giọng văn rất tự tin.</li>
-          <li><b>Rủi ro:</b> Báo cáo sai lệch, trích dẫn văn bản luật không tồn tại hoặc tính toán sai.</li>
-          <div class="tag2" style="color:var(--no);border-color:var(--no-line)"><span class="ci" data-i="ban"
-              style="color:var(--no)"></span> Luôn kiểm chứng &amp; đối chiếu số liệu gốc</div>
+        <div class="card card-image"
+          style="padding:10px;background:#fff;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,0.06)">
+          <img src="assets/data-3zones.webp"
+            style="width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--line)"
+            alt="Ba vùng dữ liệu an toàn khi sử dụng AI: Đỏ, Vàng, Xanh"
+            loading="lazy"
+            decoding="async">
+          <div
+            style="margin-top:8px;padding:4px 6px;font-size:11.5px;color:var(--muted2);text-align:center;font-weight:600">
+            Mô hình 3 vùng phân cấp dữ liệu WIR: Đỏ (Cấm), Vàng (Nội bộ hạn chế), Xanh (Công khai). Nhấp để phóng to.
+          </div>
         </div>
-
-        <div class="card warn">
-          <div class="ic"><span class="ci" data-i="eye" style="color:var(--no)"></span></div>
-          <h3 style="margin-top:12px;color:var(--no)">3. Thiếu kiểm duyệt (Human Review)</h3>
-          <li><b>Bản chất:</b> AI không có trách nhiệm pháp lý hay tư duy chịu trách nhiệm công việc.</li>
-          <li><b>Rủi ro:</b> Sự cố truyền thông, gửi nhầm email hoặc ban hành tài liệu sai sót.</li>
-          <div class="tag2" style="color:var(--no);border-color:var(--no-line)"><span class="ci" data-i="ban"
-              style="color:var(--no)"></span> Con người bắt buộc phải kiểm duyệt đầu ra cuối cùng</div>
-        </div>
-      </div>
-
-      <div class="callout" style="background:var(--no-bg);border-color:var(--no-line);border-left-color:var(--no)">
-        <span class="ci" data-i="ban" style="color:var(--no)"></span>
-        <div><b>Quy tắc 3 KHÔNG:</b> KHÔNG nhập dữ liệu mật ➔ KHÔNG tin 100% số liệu chưa kiểm chứng ➔ KHÔNG để AI tự
-          gửi/đăng bài chưa qua con người duyệt.</div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="brand">WIR GROUP · <b>AI TRAINING</b></span><span>4</span></div>
 </section>
