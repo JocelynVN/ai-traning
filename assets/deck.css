@@ -1,0 +1,2708 @@
+:root {
+  /* ---- Bảng màu chuẩn nhận diện WIR GROUP (#283957 Navy) ---- */
+  --wir-navy: #283957;
+  --wir-navy-d: #1A263B;
+  --wir-navy-t: #EEF3FA;
+  --wir-navy-t2: #F6F9FD;
+  --wir-navy-line: #D0DFEF;
+  --wir-blue: #2563EB;
+  --wir-blue-t: #EFF6FF;
+  --ink: #1B2942;
+  --ink2: #111A2B;
+  --ink3: #0E1624;
+  --berry: var(--wir-navy);
+  --berry-d: var(--wir-navy-d);
+  --berry-t: var(--wir-navy-t);
+  --berry-t2: var(--wir-navy-t2);
+  --berry-line: var(--wir-navy-line);
+  --paper: #FFFFFF;
+  --card: #F8FAFC;
+  --line: #E2E8F0;
+  --body: #475569;
+  --muted: #94A3B8;
+  --muted2: #64748B;
+  --slate3: #CBD5E1;
+  --ok: #16A34A;
+  --ok-bg: #F0FDF4;
+  --ok-line: #DCFCE7;
+  --no: #DC2626;
+  --no-bg: #FEF2F2;
+  --no-line: #FEE2E2;
+  --head: "Plus Jakarta Sans", "Be Vietnam Pro", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #0a1526;
+  color: var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Deck runtime ---------- */
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #F8FAFD;
+  overflow: hidden;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+  animation: slideFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.994);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pager {
+  display: none !important
+}
+
+.hint {
+  position: fixed;
+  bottom: 16px;
+  right: 18px;
+  z-index: 50;
+  color: #7d8aa3;
+  font-size: 12px
+}
+
+/* ---------- Hiệu ứng Bầu trời, Ánh mặt trời chiếu rọi & Ngôi sao lấp lánh (Atmosphere) ---------- */
+.slide-sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 1. Mặt trời chiếu rọi từ tâm tỏa ra xung quanh (Center Sun Flare & Radiating God-Rays) */
+.sun-flare {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(850px, 85vw);
+  height: min(850px, 85vh);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(255, 243, 196, 0.55) 0%, 
+    rgba(254, 215, 170, 0.35) 24%, 
+    rgba(147, 197, 253, 0.20) 48%, 
+    rgba(37, 99, 235, 0.06) 68%, 
+    transparent 82%);
+  filter: blur(36px);
+  animation: sunGlowPulse 8s ease-in-out infinite alternate;
+}
+
+.slide.cover .sun-flare {
+  width: min(1000px, 92vw);
+  height: min(1000px, 92vh);
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(255, 248, 220, 0.42) 0%, 
+    rgba(254, 215, 170, 0.28) 22%, 
+    rgba(96, 165, 250, 0.18) 46%, 
+    rgba(37, 99, 235, 0.08) 68%, 
+    transparent 85%);
+  filter: blur(45px);
+}
+
+/* Các luồng tia sáng toẽ 360 độ từ trung tâm ra xung quanh (Sunburst God-Rays) - dịu mắt */
+.sun-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220vmax;
+  height: 220vmax;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  pointer-events: none;
+  opacity: 0.45;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255, 246, 210, 0.12) 0deg 4deg,
+    transparent 4deg 12deg,
+    rgba(56, 189, 248, 0.09) 12deg 16deg,
+    transparent 16deg 24deg,
+    rgba(254, 215, 170, 0.10) 24deg 27deg,
+    transparent 27deg 36deg
+  );
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, 
+    rgba(0, 0, 0, 0.06) 0%, 
+    rgba(0, 0, 0, 0.65) 24%, 
+    rgba(0, 0, 0, 0.45) 55%, 
+    transparent 85%);
+  mask-image: radial-gradient(circle at 50% 50%, 
+    rgba(0, 0, 0, 0.06) 0%, 
+    rgba(0, 0, 0, 0.65) 24%, 
+    rgba(0, 0, 0, 0.45) 55%, 
+    transparent 85%);
+  animation: sunRaySpin 70s linear infinite;
+}
+
+.slide.cover .sun-rays {
+  opacity: 0.40;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255, 248, 220, 0.15) 0deg 4.5deg,
+    transparent 4.5deg 12deg,
+    rgba(56, 189, 248, 0.11) 12deg 16.5deg,
+    transparent 16.5deg 24deg,
+    rgba(254, 215, 170, 0.13) 24deg 27.5deg,
+    transparent 27.5deg 36deg
+  );
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, 
+    rgba(0, 0, 0, 0.04) 0%, 
+    rgba(0, 0, 0, 0.70) 22%, 
+    rgba(0, 0, 0, 0.45) 55%, 
+    transparent 88%);
+  mask-image: radial-gradient(circle at 50% 50%, 
+    rgba(0, 0, 0, 0.04) 0%, 
+    rgba(0, 0, 0, 0.70) 22%, 
+    rgba(0, 0, 0, 0.45) 55%, 
+    transparent 88%);
+}
+
+@keyframes sunGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.88;
+  }
+}
+
+@keyframes sunRaySpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* 2. Dải các vì sao li ti lấp lánh (Starfield Dots) */
+.starfield-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 16%, rgba(245, 158, 11, 0.75), transparent),
+    radial-gradient(2px 2px at 20% 32%, rgba(56, 189, 248, 0.70), transparent),
+    radial-gradient(1.2px 1.2px at 32% 14%, rgba(217, 119, 6, 0.65), transparent),
+    radial-gradient(2px 2px at 50% 12%, rgba(251, 191, 36, 0.80), transparent),
+    radial-gradient(1.5px 1.5px at 68% 15%, rgba(56, 189, 248, 0.70), transparent),
+    radial-gradient(2.5px 2.5px at 84% 20%, rgba(245, 158, 11, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 88% 38%, rgba(59, 130, 246, 0.65), transparent),
+    radial-gradient(2px 2px at 86% 70%, rgba(251, 191, 36, 0.80), transparent),
+    radial-gradient(1.5px 1.5px at 70% 84%, rgba(56, 189, 248, 0.65), transparent),
+    radial-gradient(2px 2px at 50% 88%, rgba(245, 158, 11, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 30% 84%, rgba(37, 99, 235, 0.60), transparent),
+    radial-gradient(2px 2px at 14% 72%, rgba(251, 191, 36, 0.70), transparent),
+    radial-gradient(1.5px 1.5px at 10% 48%, rgba(56, 189, 248, 0.65), transparent);
+  animation: starfieldTwinkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes starfieldTwinkle {
+  0% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 1px rgba(245, 158, 11, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.6));
+  }
+  100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.4));
+  }
+}
+
+/* 3. Các ngôi sao lớn lấp lánh tỏa vòng quanh tâm (Star Sparkles ✦ & ★) */
+.star-sparkle {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  font-family: system-ui, sans-serif;
+  animation: sparkleTwinkle 3.6s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.star-sparkle.s1 {
+  top: 15%;
+  left: 15%;
+  font-size: 19px;
+  color: #F59E0B;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.7), 0 0 20px rgba(251, 191, 36, 0.45);
+  animation-duration: 3.2s;
+  animation-delay: 0s;
+}
+
+.star-sparkle.s2 {
+  top: 15%;
+  right: 15%;
+  font-size: 16px;
+  color: #38BDF8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.7), 0 0 18px rgba(14, 165, 233, 0.4);
+  animation-duration: 4.1s;
+  animation-delay: 0.7s;
+}
+
+.star-sparkle.s3 {
+  top: 9%;
+  left: 49%;
+  font-size: 18px;
+  color: #FBBF24;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.8), 0 0 24px rgba(245, 158, 11, 0.5);
+  animation-duration: 3.6s;
+  animation-delay: 1.3s;
+}
+
+.star-sparkle.s4 {
+  bottom: 16%;
+  right: 15%;
+  font-size: 21px;
+  color: #F59E0B;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.8), 0 0 24px rgba(251, 191, 36, 0.5);
+  animation-duration: 2.9s;
+  animation-delay: 0.4s;
+}
+
+.star-sparkle.s5 {
+  bottom: 16%;
+  left: 15%;
+  font-size: 17px;
+  color: #60A5FA;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
+  animation-duration: 4.5s;
+  animation-delay: 1.8s;
+}
+
+.star-sparkle.s6 {
+  bottom: 9%;
+  left: 51%;
+  font-size: 19px;
+  color: #F59E0B;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.8);
+  animation-duration: 3.8s;
+  animation-delay: 1.0s;
+}
+
+@keyframes sparkleTwinkle {
+  0% {
+    transform: scale(0.65) rotate(-8deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.35) rotate(15deg);
+    opacity: 1;
+    filter: brightness(1.25);
+  }
+  100% {
+    transform: scale(0.85) rotate(-3deg);
+    opacity: 0.55;
+  }
+}
+
+/* Nền chung: quầng navy phụ góc phải trên + thanh gradient đáy */
+.slide::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: -160px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at 45% 45%, rgba(40, 57, 87, .09), rgba(40, 57, 87, 0) 65%);
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  pointer-events: none;
+  z-index: 4;
+  background: linear-gradient(90deg, var(--wir-navy) 0%, #3D557D 48%, var(--wir-navy-d) 100%);
+}
+
+/* Logo thương hiệu góc phải trên mỗi slide */
+.slide-logo {
+  position: absolute;
+  top: 22px;
+  right: clamp(32px, 3.8vw, 64px);
+  height: 28px;
+  width: auto;
+  z-index: 10;
+  opacity: .92;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
+/* ---------- Khối tiêu đề slide nội dung ---------- */
+.pad {
+  position: absolute;
+  inset: 0;
+  padding: 24px clamp(32px, 3.8vw, 64px) 44px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: none !important;
+}
+
+h1.title {
+  color: var(--ink);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: clamp(22px, 2.0vw, 28px);
+  line-height: 1.22;
+  letter-spacing: -.01em;
+  margin-top: 0;
+}
+
+h1.title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--wir-navy);
+  margin-top: 7px;
+}
+
+.slide.active h1.title {
+  animation: titleSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes titleSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide.active h1.title::after {
+  animation: titleBarExpand 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes titleBarExpand {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 40px;
+    opacity: 1;
+  }
+}
+
+h1.title.sm {
+  font-size: clamp(20px, 1.8vw, 25px);
+}
+
+.lead {
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 85ch;
+  margin-top: 10px;
+}
+
+.topbar {
+  display: none;
+}
+
+.corner,
+.ribbon {
+  display: none;
+}
+
+/* ---------- Footer tự sinh ---------- */
+.foot {
+  display: none;
+}
+
+.wfoot {
+  position: absolute;
+  left: clamp(32px, 3.8vw, 64px);
+  right: clamp(32px, 3.8vw, 64px);
+  bottom: 13px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 7px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .01em;
+}
+
+.wfoot .l {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.wfoot .foot-logo {
+  height: 16px;
+  width: auto;
+  opacity: .8;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.wfoot .c {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: 10px;
+  font-weight: 700;
+  color: #AEB9C7
+}
+
+.wfoot .r {
+  text-align: right
+}
+
+/* ---------- Bìa: tràn viền 100% full bleed, không viền hộp ---------- */
+.cover {
+  background: linear-gradient(135deg, #0E1624 0%, #18263D 52%, #283957 100%);
+  width: 100%;
+  height: 100%
+}
+
+.cover .panel {
+  display: none
+}
+
+.cover .cbody {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px clamp(40px, 6vw, 100px);
+  z-index: 2;
+  text-align: center
+}
+
+.cover-logo-wrap {
+  margin-bottom: 22px
+}
+
+.cover-logo {
+  height: 76px;
+  width: auto;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .35))
+}
+
+.cover .badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .22);
+  color: #93C5FD;
+  font-weight: 800;
+  font-size: 11.5px;
+  letter-spacing: .22em;
+  padding: 8px 24px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px)
+}
+
+.cover h1 {
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: clamp(44px, 4vw, 58px);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  margin-top: 22px
+}
+
+.cover .sub {
+  color: #CBD5E1;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  margin-top: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.cover .cmeta {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 3.5vw, 56px);
+  margin-top: 48px;
+  color: #E2E8F0;
+  font-size: 14px
+}
+
+.cover .cmeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px
+}
+
+.cover .cmeta svg {
+  width: 17px;
+  height: 17px;
+  stroke: #60A5FA;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none
+}
+
+/* class cũ của bìa — vô hiệu để không đè lên bố cục mới */
+.cover .blob,
+.cover .wordmark,
+.cover .row {
+  display: none
+}
+
+/* ---------- Slide kết: giao bài về nhà + câu chốt + liên hệ ---------- */
+.closing {
+  background: var(--paper)
+}
+
+.closing .cl {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 100px 40px
+}
+
+.closing h1 {
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1.18;
+  letter-spacing: -.015em;
+  margin-top: 18px
+}
+
+.closing .sub {
+  color: var(--muted2);
+  font-size: 20px;
+  line-height: 1.5;
+  margin-top: 16px;
+  max-width: 760px
+}
+
+.closing .stats {
+  margin-top: 32px
+}
+
+.closing .stats div {
+  padding: 18px 24px
+}
+
+.closing .cta {
+  margin-top: 30px
+}
+
+/* câu chốt cuối buổi — nhịp kết, cỡ chữ đọc được từ cuối phòng */
+.closing .sign {
+  color: var(--muted2);
+  font-size: 19px;
+  line-height: 1.5;
+  margin-top: 34px;
+  max-width: 800px
+}
+
+.closing .contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 14px 34px;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px
+}
+
+.closing .contact span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px
+}
+
+.closing .contact svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--berry);
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none
+}
+
+.closing .contact s {
+  text-decoration: none;
+  color: var(--slate3);
+  font-weight: 400
+}
+
+/* Slide kết — ảnh full-bleed */
+.slide.close-hero::before,
+.slide.close-hero::after {
+  display: none
+}
+
+.slide.close-hero {
+  background: #e8f4fc
+}
+
+.slide.close-hero .wfoot {
+  display: none
+}
+
+.close-full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 1
+}
+
+/* dải số liệu / nghiệm thu — dùng trên slide nội dung */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px
+}
+
+.stats div {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 24px;
+  color: var(--body);
+  font-size: 14px
+}
+
+.stats b {
+  display: block;
+  color: var(--ink);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 5px
+}
+
+.cta {
+  display: inline-block;
+  background: var(--berry);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15.5px;
+  padding: 13px 30px;
+  border-radius: 999px
+}
+
+/* ---------- Thành phần chung ---------- */
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.g3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.g2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Hiệu ứng chuyển động & Tương tác (Animations & Interactions) ---------- */
+.card,
+.dd .col,
+.step,
+.layer,
+.or-left,
+.or-right,
+.cmp .c {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s ease;
+}
+
+.card:hover,
+.dd .col:hover,
+.step:hover,
+.cmp .c:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(40, 57, 87, 0.12);
+  border-color: rgba(40, 57, 87, 0.3);
+}
+
+.slide.active .card,
+.slide.active .dd .col,
+.slide.active .or-left,
+.slide.active .or-right,
+.slide.active .step,
+.slide.active .layer,
+.slide.active .cmp .c {
+  animation: cardEntrance 0.52s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delay theo vị trí phần tử */
+.slide.active .grid>*:nth-child(1),
+.slide.active .dd>*:nth-child(1),
+.slide.active .or-split>*:nth-child(1),
+.slide.active .ladder>*:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.slide.active .grid>*:nth-child(2),
+.slide.active .dd>*:nth-child(2),
+.slide.active .or-split>*:nth-child(2),
+.slide.active .ladder>*:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.slide.active .grid>*:nth-child(3),
+.slide.active .dd>*:nth-child(3),
+.slide.active .ladder>*:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.slide.active .grid>*:nth-child(4),
+.slide.active .ladder>*:nth-child(4) {
+  animation-delay: 0.32s;
+}
+
+.slide.active .grid>*:nth-child(5) {
+  animation-delay: 0.40s;
+}
+
+.slide.active .grid>*:nth-child(6) {
+  animation-delay: 0.48s;
+}
+
+/* Biểu tượng & số thứ tự nảy nhẹ */
+.slide.active .num,
+.slide.active .ibx,
+.slide.active .card .ic {
+  animation: popBadge 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s both;
+}
+
+@keyframes popBadge {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card:hover .num,
+.card:hover .ibx,
+.card:hover .ci svg,
+.card:hover .ic {
+  transform: scale(1.12);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Danh sách gạch đầu dòng xuất hiện mượt mà */
+.slide.active li {
+  animation: itemSlideIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide.active li:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.slide.active li:nth-child(2) {
+  animation-delay: 0.24s;
+}
+
+.slide.active li:nth-child(3) {
+  animation-delay: 0.30s;
+}
+
+.slide.active li:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.slide.active li:nth-child(5) {
+  animation-delay: 0.42s;
+}
+
+@keyframes itemSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hộp Callout xuất hiện mềm mại */
+.slide.active .callout {
+  animation: calloutPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.callout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(40, 57, 87, 0.08);
+}
+
+@keyframes calloutPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Nút bấm & tương tác phản hồi */
+.btn-copy,
+.cta {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-copy:hover,
+.cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.btn-copy:active,
+.cta:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Ảnh tĩnh tuyệt đối, bỏ hoàn toàn hiệu ứng hover zoom/rung giật */
+img,
+.zoomable-img {
+  transform: none !important;
+  transition: none !important;
+  cursor: default !important;
+}
+
+img:hover,
+.zoomable-img:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.card:has(img),
+.card:has(img):hover,
+.card-image,
+.card-image:hover {
+  transform: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  border-color: var(--line) !important;
+  transition: none !important;
+}
+
+/* Bìa cover animation */
+.slide.cover.active .cover-logo-wrap {
+  animation: coverFloat 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide.cover.active .badge {
+  animation: badgeGlow 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.slide.cover.active h1 {
+  animation: titleSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.slide.cover.active .sub {
+  animation: cardEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.slide.cover.active .cmeta {
+  animation: cardEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+@keyframes coverFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes badgeGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.card li {
+  list-style: none;
+  font-size: 12px;
+  line-height: 1.42;
+  padding: 2.5px 0 2.5px 15px;
+  position: relative;
+  color: var(--body);
+}
+
+.card li::before {
+  content: "•";
+  position: absolute;
+  left: 2px;
+  color: var(--berry);
+  font-weight: 800;
+}
+
+.or-left ul,
+.body>ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.or-left li,
+.body>ul li {
+  list-style: none;
+  font-size: 12.5px;
+  line-height: 1.42;
+  padding: 3px 0 3px 15px;
+  position: relative;
+  color: var(--body);
+}
+
+.or-left li::before,
+.body>ul li::before {
+  content: "•";
+  position: absolute;
+  left: 2px;
+  color: var(--berry);
+  font-weight: 800;
+}
+
+.or-ways li {
+  list-style: none;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 4px 0 4px 16px;
+  position: relative;
+  color: var(--body);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.or-ways li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: var(--berry);
+  font-weight: 800;
+}
+
+.or-ways li b {
+  color: var(--ink);
+}
+
+.wf-step li {
+  list-style: none;
+  display: inline;
+  padding: 0;
+}
+
+.wf-step li::before {
+  content: none;
+}
+
+.card.warn {
+  background: var(--no-bg);
+  border-color: var(--no-line);
+}
+
+.card.warn .ic {
+  background: #fff;
+}
+
+.card .ic {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--berry-t);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.card h3 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 14px;
+  margin: 6px 0 4px;
+}
+
+.card p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--body);
+}
+
+.card p b {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.num {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--berry);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 15px;
+  background: var(--berry-t);
+}
+
+.callout {
+  background: var(--berry-t2);
+  border: 1px solid var(--berry-line);
+  border-left: 4px solid var(--berry);
+  border-radius: 9px;
+  padding: 8px 13px;
+  color: var(--body);
+  font-size: 11.5px;
+  line-height: 1.4;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.callout .ic {
+  font-size: 18px;
+  line-height: 1.4
+}
+
+.callout b {
+  color: var(--ink);
+  font-weight: 700
+}
+
+.tag2 {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  color: var(--berry);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.45;
+  display: flex;
+  align-items: center;
+  gap: 6px
+}
+
+.tag2 .ci svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2
+}
+
+/* thang 4 mức */
+.ladder {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 30px
+}
+
+.step {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 18px;
+  min-height: 206px
+}
+
+.step .lv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: var(--berry);
+  font-size: 12.5px;
+  letter-spacing: .08em
+}
+
+.step .lv .b {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--berry-t);
+  color: var(--berry);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px
+}
+
+.step h3 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 17.5px;
+  margin: 10px 0 6px
+}
+
+.step p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--body)
+}
+
+.step .you {
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--berry-t);
+  border-radius: 8px;
+  padding: 7px 10px
+}
+
+.step .tool {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid var(--berry);
+  border-right: 2px solid var(--berry);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: .5
+}
+
+.step:last-child::after {
+  display: none
+}
+
+.step .up {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  color: var(--slate3);
+  font-size: 13px
+}
+
+/* ba tầng */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px
+}
+
+.layer {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 22px
+}
+
+.layer .tag {
+  font-family: var(--head);
+  font-weight: 800;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 11px;
+  padding: 13px 0;
+  text-align: center
+}
+
+.layer.a .tag {
+  background: var(--ink)
+}
+
+.layer.b .tag {
+  background: #374D70
+}
+
+.layer.c .tag {
+  background: var(--berry)
+}
+
+.layer h3 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-size: 17.5px;
+  font-weight: 800;
+  margin-bottom: 3px
+}
+
+.layer p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.5
+}
+
+.layer .meta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600
+}
+
+/* bảng */
+table.matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden
+}
+
+.matrix th,
+.matrix td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line)
+}
+
+.matrix thead th {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 700;
+  font-size: 13.5px;
+  border-bottom: none
+}
+
+.matrix tbody td {
+  color: var(--body)
+}
+
+.matrix tbody td:first-child {
+  font-weight: 700;
+  color: var(--ink)
+}
+
+.matrix tbody tr:nth-child(even) td {
+  background: var(--card)
+}
+
+.matrix tbody tr:last-child td {
+  border-bottom: none
+}
+
+.matrix .b {
+  color: var(--berry);
+  font-weight: 700
+}
+
+/* timeline */
+.tl {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 9px;
+  margin-top: 26px
+}
+
+.tl .n {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px 11px;
+  text-align: center
+}
+
+.tl .n .code {
+  display: inline-block;
+  font-weight: 800;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--ink)
+}
+
+.tl .n.c .code {
+  background: var(--berry)
+}
+
+.tl .n h4 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-size: 12.5px;
+  font-weight: 700;
+  margin: 9px 0 4px;
+  line-height: 1.25
+}
+
+.tl .n p {
+  font-size: 10.5px;
+  color: var(--muted2);
+  line-height: 1.4
+}
+
+.tl-legend {
+  display: flex;
+  gap: 22px;
+  margin-top: 18px;
+  font-size: 12.5px;
+  color: var(--body)
+}
+
+.tl-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px
+}
+
+.sw {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px
+}
+
+.rhythm {
+  margin-top: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px 22px
+}
+
+.rh-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--berry);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 12px
+}
+
+.rh-flow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-wrap: wrap
+}
+
+.rh-flow span {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 17px;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 13.5px
+}
+
+.rh-flow i {
+  color: var(--berry);
+  font-style: normal;
+  font-weight: 800
+}
+
+/* chip */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 24px
+}
+
+.chip {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 15.5px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center
+}
+
+.chip .d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--berry)
+}
+
+/* trích dẫn */
+.quote {
+  background: var(--paper)
+}
+
+.quote .pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center
+}
+
+.quote .mark {
+  color: var(--berry-t);
+  font-size: 96px;
+  font-weight: 800;
+  line-height: .6;
+  font-family: Georgia, serif
+}
+
+.quote p {
+  color: var(--ink);
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.32;
+  max-width: 26ch;
+  margin-top: 18px
+}
+
+.quote p b {
+  color: var(--berry)
+}
+
+.quote .by {
+  color: var(--berry);
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 26px
+}
+
+/* nên / không nên */
+.dd {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 22px
+}
+
+.dd .col {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px
+}
+
+.dd .col.ok {
+  background: var(--ok-bg);
+  border-color: var(--ok-line)
+}
+
+.dd .col.no {
+  background: var(--no-bg);
+  border-color: var(--no-line)
+}
+
+.dd h3 {
+  font-family: var(--head);
+  font-size: 15.5px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink)
+}
+
+.dd .col.ok h3 {
+  color: var(--ok)
+}
+
+.dd .col.no h3 {
+  color: var(--no)
+}
+
+.dd li {
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 6px 0 6px 26px;
+  position: relative;
+  color: var(--body)
+}
+
+.dd .col li::before {
+  content: "›";
+  position: absolute;
+  left: 2px;
+  color: var(--berry);
+  font-weight: 800
+}
+
+.dd .col.ok li::before {
+  content: "✓";
+  left: 0;
+  color: var(--ok)
+}
+
+.dd .col.no li::before {
+  content: "✕";
+  left: 0;
+  color: var(--no)
+}
+
+/* thẻ ví dụ theo tuyến */
+.ex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 22px
+}
+
+.ex .c {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden
+}
+
+.ex .c .h {
+  padding: 13px 20px;
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 15.5px;
+  display: flex;
+  align-items: center;
+  gap: 9px
+}
+
+.ex .c.sale .h {
+  background: var(--ink)
+}
+
+.ex .c.mkt .h {
+  background: var(--berry)
+}
+
+.ex .c.off .h {
+  background: #475569
+}
+
+.ex .c .body {
+  padding: 15px 20px
+}
+
+.ex .c .body li {
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 5px 0 5px 19px;
+  position: relative;
+  color: var(--body)
+}
+
+.ex .c .body li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--berry);
+  font-weight: 800
+}
+
+.ex .prod {
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic
+}
+
+.kick {
+  display: flex;
+  align-items: center;
+  gap: 14px
+}
+
+.pill {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--card)
+}
+
+.pill.berry {
+  background: var(--berry-t);
+  border-color: var(--berry-line);
+  color: var(--berry)
+}
+
+@media print {
+  @page {
+    size: 1280px 720px;
+    margin: 0
+  }
+
+  html,
+  body {
+    background: #fff
+  }
+
+  #stage {
+    position: static;
+    display: block;
+    overflow: visible
+  }
+
+  .slide {
+    position: relative !important;
+    transform: none !important;
+    page-break-after: always;
+    box-shadow: none;
+    display: block !important;
+    animation: none !important;
+    width: 1280px;
+    height: 720px
+  }
+
+  .pager,
+  .hint {
+    display: none !important
+  }
+}
+
+/* ---------- Riêng deck tổng quan: bố cục head/body + icon SVG nội tuyến ---------- */
+.pad {
+  display: flex;
+  flex-direction: column
+}
+
+.head {
+  flex: none
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+[data-i] svg {
+  display: block;
+}
+
+.ibx {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--berry-t);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--berry);
+  flex: none;
+}
+
+.ibx svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ci {
+  display: inline-flex;
+  color: var(--berry);
+  flex: none
+}
+
+.ci svg {
+  width: 22px;
+  height: 22px
+}
+
+.dd h3 svg {
+  width: 20px;
+  height: 20px
+}
+
+.ex .c .h svg {
+  width: 19px;
+  height: 19px
+}
+
+.ex .c .body {
+  display: block;
+  flex: none
+}
+
+.ex .prod {
+  margin-top: 8px
+}
+
+/* ---------- So sánh LLM + tool thực hành ---------- */
+.cmp {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px
+}
+
+.cmp .c {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden
+}
+
+.cmp .c .h {
+  padding: 12px 18px;
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 15px
+}
+
+.cmp .c.gpt .h {
+  background: #10A37F
+}
+
+.cmp .c.claude .h {
+  background: #D97757
+}
+
+.cmp .c.gemini .h {
+  background: #4285F4
+}
+
+.cmp .c .body {
+  padding: 14px 18px 16px
+}
+
+.cmp .c .body li {
+  list-style: none;
+  font-size: 12.5px;
+  line-height: 1.5;
+  padding: 4px 0 4px 17px;
+  position: relative;
+  color: var(--body)
+}
+
+.cmp .c .body li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--berry);
+  font-weight: 800
+}
+
+.cmp .c .body li b {
+  color: var(--ink)
+}
+
+.cmp .try {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 11.5px;
+  color: var(--berry);
+  font-weight: 700;
+  line-height: 1.45
+}
+
+.appmap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px
+}
+
+.appmap .c {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 16px 18px
+}
+
+.appmap .c li {
+  list-style: none;
+  font-size: 12.5px;
+  line-height: 1.45;
+  padding: 3px 0 3px 14px;
+  position: relative;
+  color: var(--body)
+}
+
+.appmap .c li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--berry);
+  font-weight: 800
+}
+
+.appmap .c h3 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.appmap .c .tools {
+  color: var(--berry);
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.4
+}
+
+.appmap .c p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--body)
+}
+
+.toollist {
+  display: flex;
+  flex-direction: column;
+  gap: 9px
+}
+
+.toolrow {
+  display: grid;
+  grid-template-columns: 128px 1fr 1.15fr;
+  gap: 14px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 16px
+}
+
+.toolrow .name {
+  color: var(--ink);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 14px
+}
+
+.toolrow .name span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  margin-top: 2px
+}
+
+.toolrow .use {
+  font-size: 12.5px;
+  color: var(--body);
+  line-height: 1.45
+}
+
+.toolrow .act {
+  font-size: 12px;
+  color: var(--muted2);
+  line-height: 1.45;
+  background: #fff;
+  border: 1px dashed var(--line);
+  border-radius: 9px;
+  padding: 8px 11px
+}
+
+.appmap .c h3 svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--berry);
+  fill: none;
+  stroke-width: 1.9;
+  flex: none
+}
+
+.flow4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px
+}
+
+.flow4 .step {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 16px;
+  min-height: 0
+}
+
+.flow4 .step .n {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--berry-t);
+  color: var(--berry);
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.flow4 .step h3 {
+  color: var(--ink);
+  font-family: var(--head);
+  font-size: 15px;
+  font-weight: 800;
+  margin: 10px 0 6px
+}
+
+.flow4 .step p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--body)
+}
+
+.flow4 .step p b {
+  color: var(--ink)
+}
+
+.or-split {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 18px;
+  align-items: stretch;
+  min-height: 0
+}
+
+.or-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0
+}
+
+.or-shot {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  min-height: 0;
+  display: flex;
+  flex-direction: column
+}
+
+.or-shot img {
+  width: 100%;
+  flex: 1;
+  min-height: 280px;
+  max-height: 420px;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+  background: #0b1220
+}
+
+.or-shot .cap {
+  padding: 8px 12px;
+  font-size: 10.5px;
+  color: var(--muted);
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  line-height: 1.4
+}
+
+.or-ways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px
+}
+
+.or-ways div {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px
+}
+
+.or-ways b {
+  display: block;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 2px
+}
+
+.or-ways span {
+  font-size: 11px;
+  color: var(--body);
+  line-height: 1.4
+}
+
+.wf-pipe {
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+
+.wf-step {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 10px;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--body)
+}
+
+.wf-step .t {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--berry);
+  padding-top: 1px
+}
+
+.wf-step b {
+  color: var(--ink)
+}
+
+.modmap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px
+}
+
+.modmap .m {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden
+}
+
+.modmap .mh {
+  padding: 9px 12px;
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: .02em
+}
+
+.modmap .mh.img {
+  background: var(--ink)
+}
+
+.modmap .mh.vid {
+  background: var(--berry)
+}
+
+.modmap .mh.aud {
+  background: #374D70
+}
+
+.modmap .mh.ag {
+  background: #475569
+}
+
+.modmap ul {
+  list-style: none;
+  padding: 11px 12px 13px;
+  margin: 0
+}
+
+.modmap li {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--body);
+  padding: 4px 0 4px 0;
+  border-bottom: 1px dashed var(--line)
+}
+
+.modmap li:last-child {
+  border-bottom: none
+}
+
+.modmap li b {
+  color: var(--ink);
+  font-weight: 700
+}
+
+.modmap li.note {
+  color: var(--muted2);
+  font-size: 11px;
+  padding-top: 6px
+}
+
+/* ---------- Áp dụng theo phòng ban ---------- */
+.dept3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px
+}
+
+.dept3 .t {
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--card);
+  display: flex;
+  flex-direction: column
+}
+
+.dept3 .th {
+  padding: 8px 12px;
+  color: #fff;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .02em
+}
+
+.dept3 .th.gl {
+  background: #4285F4
+}
+
+.dept3 .th.sd {
+  background: #374D70
+}
+
+.dept3 .th.or {
+  background: var(--berry)
+}
+
+.dept3 .tb {
+  padding: 10px 12px 12px;
+  flex: 1;
+  font-size: 11.5px;
+  line-height: 1.42;
+  color: var(--body)
+}
+
+.dept3 .tb li {
+  list-style: none;
+  padding: 3px 0 3px 14px;
+  position: relative
+}
+
+.dept3 .tb li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--berry);
+  font-weight: 800
+}
+
+.dept3 .tb li b {
+  color: var(--ink)
+}
+
+.dept3 .del {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--line);
+  font-size: 10.5px;
+  color: var(--berry);
+  font-weight: 700;
+  line-height: 1.4
+}
+
+.deptmx {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 11.5px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 4px
+}
+
+.deptmx th,
+.deptmx td {
+  padding: 9px 11px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top
+}
+
+.deptmx thead th {
+  background: var(--ink);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700
+}
+
+.deptmx tbody td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  width: 108px;
+  background: var(--card)
+}
+
+.deptmx tbody tr:nth-child(even) td {
+  background: #fafbfc
+}
+
+.deptmx tbody tr:last-child td {
+  border-bottom: none
+}
+
+.deptmx .gl {
+  color: #1a56db;
+  font-weight: 600
+}
+
+.deptmx .sd {
+  color: #374D70;
+  font-weight: 600
+}
+
+.deptmx .or {
+  color: var(--berry);
+  font-weight: 600
+}
+
+/* ---------- Prompt ảnh ---------- */
+.prm-formula {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 10px
+}
+
+.prm-formula .f {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center
+}
+
+.prm-formula .f b {
+  display: block;
+  color: var(--berry);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 3px
+}
+
+.prm-formula .f span {
+  font-size: 11px;
+  color: var(--body);
+  line-height: 1.35
+}
+
+.prm-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px
+}
+
+.prm-box {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+  background: var(--card)
+}
+
+.prm-box .ph {
+  padding: 8px 12px;
+  font-family: var(--head);
+  font-weight: 800;
+  font-size: 12px;
+  color: #fff
+}
+
+.prm-box.ok .ph {
+  background: var(--ok)
+}
+
+.prm-box.bad .ph {
+  background: var(--no)
+}
+
+.prm-box.berry .ph {
+  background: var(--berry)
+}
+
+.prm-box img {
+  width: 100%;
+  height: 148px;
+  object-fit: cover;
+  display: block
+}
+
+.prm-box .tx {
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--body);
+  background: #fff
+}
+
+.prm-box .tx code {
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: var(--card);
+  border-radius: 8px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-wrap;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text
+}
+
+.prm-box .tx code.scroll {
+  max-height: 420px;
+  overflow-y: auto
+}
+
+.prm-box.sm img {
+  height: 88px
+}
+
+.prm-box.sm .ph {
+  padding: 6px 10px;
+  font-size: 11px
+}
+
+.prm-box.sm .tx {
+  padding: 6px 8px;
+  font-size: 10px
+}
+
+.prm-box.sm .tx code {
+  margin-top: 4px;
+  padding: 6px 8px;
+  font-size: 9.5px;
+  line-height: 1.4;
+  max-height: 110px;
+  overflow-y: auto
+}
+
+/* Demo ảnh full 1:1 (không crop) + prompt cạnh */
+.prm-box.demo-full .row {
+  display: grid;
+  grid-template-columns: 158px 1fr;
+  background: #0b1220;
+  min-height: 0
+}
+
+.prm-box.demo-full .shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: #0b1220
+}
+
+.prm-box.demo-full .shot img {
+  width: 146px;
+  height: 146px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #0b1220;
+  border-radius: 4px
+}
+
+.prm-box.demo-full .tx {
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff
+}
+
+.prm-box.demo-full .tx code {
+  margin-top: 0;
+  padding: 6px 8px;
+  font-size: 9.5px;
+  line-height: 1.35;
+  max-height: 146px;
+  overflow-y: auto;
+  flex: 1
+}
+
+.prm-tips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 8px
+}
+
+.prm-tips div {
+  background: var(--berry-t2);
+  border: 1px solid var(--berry-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--body)
+}
+
+.prm-tips b {
+  color: var(--ink);
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px
+}
+
+/* ---------- Image Lightbox Zoom Modal ---------- */
+.zoomable-img {
+  cursor: default !important;
+}
+
+.deck-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 21, 38, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: zoom-out;
+}
+
+.deck-modal.open {
+  display: flex !important;
+  animation: modalFadeIn .2s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.deck-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-out;
+}
+
+.deck-modal-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: zoomModalIn .2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  max-width: 96vw;
+  max-height: 95vh;
+}
+
+@keyframes zoomModalIn {
+  from {
+    transform: scale(0.93);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.deck-modal-img {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 95vw !important;
+  max-height: calc(90vh - 54px) !important;
+  border-radius: 10px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  cursor: zoom-out;
+  background: transparent !important;
+}
+
+.deck-modal-cap {
+  margin-top: 10px;
+  padding: 8px 24px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  max-width: 85vw;
+  line-height: 1.4;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.deck-modal-close {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 1000000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s ease;
+  line-height: 1;
+}
+
+.deck-modal-close:hover {
+  background: rgba(220, 38, 38, 0.9);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
