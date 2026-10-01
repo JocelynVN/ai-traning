@@ -1,69 +1,111 @@
-<section class="slide dense">
+<section class="slide">
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">Bài Tập Prompt: Thư Ngỏ B2B Tiếp Cận Spa / Clinic</h1>
+      <h1 class="title">Cấu Trúc Prompt Chuẩn OpenAI: 3 Thành Phần Cốt Lõi</h1>
     </div>
     <div class="body">
-      <div class="or-split" style="grid-template-columns:31% 69%;gap:18px;align-items:start">
-        <div class="or-left">
-          <div class="card card-image" style="padding:12px;background:#fff;border:1px solid var(--line);border-radius:10px">
-            <img src="assets/elasten-product-ref.webp"
-              style="width:100%;height:110px;object-fit:contain;border-radius:6px;display:block"
-              alt="Sản phẩm Elasten dạng hộp 28 ống" loading="lazy" decoding="async">
-            <div style="margin-top:8px;padding:5px 8px;font-size:12px;color:var(--wir-navy);text-align:center;font-weight:700;background:var(--wir-navy-t);border-radius:6px">
-              Tình huống thực hành B2B Elasten
-            </div>
+      <!-- 3 Khối dòng chảy chuẩn OpenAI Academy -->
+      <div style="display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;align-items:center;gap:6px;margin-bottom:14px">
+        <!-- Khối 1: Task -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #0284c7;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="pen" style="color:#fff"></span>
           </div>
-
-          <div class="card" style="padding:14px 16px;margin-top:12px;background:#F8FAFC;border:1px solid var(--line);border-radius:10px">
-            <h3 style="font-size:14.5px;color:var(--ink);margin:0 0 6px"><span class="ci" data-i="target"></span> Nhiệm vụ thực hành</h3>
-            <p style="font-size:13px;line-height:1.5;color:var(--body);margin:0 0 10px">Soạn email mở đầu gửi người phụ trách Spa / Clinic để tìm hiểu cơ hội hợp tác phân phối Elasten.</p>
-            
-            <h4 style="font-size:13.5px;color:var(--wir-navy);margin:0 0 6px"><span class="ci" data-i="process"></span> Các bước thực hiện:</h4>
-            <li style="font-size:12.5px;line-height:1.45;padding:2px 0 2px 18px"><b>1.</b> Viết thử prompt trong 2 phút.</li>
-            <li style="font-size:12.5px;line-height:1.45;padding:2px 0 2px 18px"><b>2.</b> Đối chiếu với 2 mẫu bên cạnh.</li>
-            <li style="font-size:12.5px;line-height:1.45;padding:2px 0 2px 18px"><b>3.</b> Kiểm tra dữ kiện trước khi dùng.</li>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#0284c7">Task (Nhiệm vụ)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Điều bạn muốn ChatGPT thực hiện</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Soạn email mở đầu B2B"
           </div>
         </div>
 
-        <div class="or-right">
-          <div class="dd" style="margin-top:0;grid-template-columns:1fr;gap:12px">
-            <div class="col no" style="padding:12px 16px;border-radius:10px">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
-                <h3 style="margin:0;font-size:14.5px;color:#dc2626"><span class="ci" data-i="no"></span> 1. Prompt thiếu bối cảnh (Chưa đạt)</h3>
-                <button class="btn-copy" data-copy-target="prompt-text-1"
-                  style="cursor:pointer;background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700">Sao chép</button>
-              </div>
-              <div id="prompt-text-1" style="background:#fff;border:1px dashed var(--no-line);padding:10px 12px;border-radius:7px;font-family:system-ui, -apple-system, sans-serif;font-size:13.5px;color:var(--ink);line-height:1.5;user-select:all">
-                Viết một email gửi chủ Spa để mời họ nhập Elasten về bán.
-              </div>
-              <div style="font-size:12px;color:#b91c1c;margin-top:6px;display:flex;align-items:center;gap:6px">
-                <b>✕ Nhược điểm:</b> Thiếu đối tượng, nguồn dữ kiện, giới hạn cam kết và cấu trúc đầu ra.
-              </div>
-            </div>
+        <!-- Mũi tên 1 -->
+        <div style="text-align:center;color:var(--muted2);font-size:18px;font-weight:800">➔</div>
 
-            <div class="col ok" style="padding:12px 16px;border-radius:10px">
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
-                <h3 style="margin:0;font-size:14.5px;color:#166534"><span class="ci" data-i="ok"></span> 2. Prompt chuẩn OpenAI (Task · Context · Expectation)</h3>
-                <button class="btn-copy" data-copy-target="prompt-text-2"
-                  style="cursor:pointer;background:#dcfce7;border:1px solid #86efac;color:#166534;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700">Sao chép</button>
-              </div>
-              <div id="prompt-text-2" style="background:#fff;border:1px solid var(--ok-line);padding:10px 12px;border-radius:7px;font-family:system-ui, -apple-system, sans-serif;font-size:12.5px;color:var(--ink);line-height:1.5;user-select:all;white-space:pre-wrap"><b>[Task]</b> Soạn email B2B mở đầu gửi người phụ trách Spa/Clinic để tìm hiểu cơ hội hợp tác phân phối Collagen Elasten.
-
-<b>[Context]</b> Tôi là chuyên viên phát triển kênh B2B của WIR Group. Chỉ dùng dữ kiện đã phê duyệt: Elasten Collagen số 1 tại Đức, có nghiên cứu lâm sàng, chiết khấu đại lý 35%, cam kết hạn sử dụng. Nếu thiếu thông tin, ghi [CẦN XÁC NHẬN]. Tuyệt đối không mô tả sản phẩm như thuốc điều trị.
-
-<b>[Expectation]</b> Tối đa 180 từ, văn phong chuyên nghiệp, tôn trọng đối tác B2B. Cấu trúc gồm tiêu đề súc tích, lời chào lịch sự, 2 lợi thế hợp tác và một lời mời trao đổi 15 phút.</div>
-            </div>
+        <!-- Khối 2: Context -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #4f46e5;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="search" style="color:#fff"></span>
           </div>
-
-          <div class="callout" style="padding:10px 16px;font-size:13px;margin-top:10px;border-radius:8px">
-            <span class="ci" data-i="shield"></span>
-            <div><b>Tiêu chí đạt chuẩn:</b> Đúng dữ kiện đã duyệt, đúng người nhận, có bước tiếp theo rõ ràng (CTA) và không thêm cam kết chưa phê duyệt.</div>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#4f46e5">Context (Bối cảnh)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Thông tin nền tảng AI cần cân nhắc</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Sản phẩm Elasten Đức, gửi Chủ Spa"
           </div>
+        </div>
+
+        <!-- Mũi tên 2 -->
+        <div style="text-align:center;color:var(--muted2);font-size:18px;font-weight:800">➔</div>
+
+        <!-- Khối 3: Expectation -->
+        <div class="card" style="padding:14px 16px;text-align:center;border-top:3px solid #16a34a;background:#fff">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0f172a;color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">
+            <span class="ci" data-i="check" style="color:#fff"></span>
+          </div>
+          <h3 style="font-size:15px;margin:0 0 4px;color:#16a34a">Expectation (Kỳ vọng)</h3>
+          <p style="font-size:11.8px;color:var(--body);margin:0 0 8px;line-height:1.4">Hình thức, giọng điệu & tiêu chuẩn đầu ra</p>
+          <div style="background:#f1f5f9;border-radius:6px;padding:5px 8px;font-family:monospace;font-size:11px;color:var(--ink)">
+            "Dưới 180 từ, lịch thiệp, có CTA"
+          </div>
+        </div>
+      </div>
+
+      <!-- Bảng đối chiếu chi tiết theo giáo trình OpenAI Academy -->
+      <div class="card" style="padding:0;background:#fff;overflow:hidden;border:1px solid var(--line)">
+        <table style="width:100%;border-collapse:collapse;font-size:11.8px;text-align:left">
+          <thead>
+            <tr style="background:#0f172a;color:#fff">
+              <th style="padding:9px 14px;width:18%;font-weight:700">Thành phần</th>
+              <th style="padding:9px 14px;width:34%;font-weight:700">Chi tiết cần cân nhắc (Details)</th>
+              <th style="padding:9px 14px;width:48%;font-weight:700">Ví dụ thực tế tại WIR Group (Examples)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:10px 14px;font-weight:700;color:#0284c7">
+                <span class="ci" data-i="pen"></span> Task
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Hành động cốt lõi bạn muốn ChatGPT thực thi.
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Soạn email mở đầu B2B"</i> · <i>"Tóm tắt biên bản họp tuần"</i> · <i>"Lập checklist CSKH Spa"</i>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);background:#fafafa">
+              <td style="padding:10px 14px;font-weight:700;color:#4f46e5">
+                <span class="ci" data-i="search"></span> Context
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Người nhận là ai, tại sao cần làm, người đọc đã biết gì, tài liệu/chính sách WIR đã duyệt, ranh giới an toàn.
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Người nhận: Chủ Spa/Clinic"</i> · <i>"Sản phẩm: Collagen Elasten số 1 tại Đức"</i> · <i>"Chính sách chiết khấu 35%"</i> · <i>"Cấm tự bịa claim y tế"</i>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 14px;font-weight:700;color:#16a34a">
+                <span class="ci" data-i="check"></span> Expectation
+              </td>
+              <td style="padding:10px 14px;color:var(--body)">
+                Định dạng (Format), Độ dài (Length), Giọng điệu (Tone) và Mức độ chi tiết (Level of detail).
+              </td>
+              <td style="padding:10px 14px;color:var(--ink);font-weight:500">
+                <i>"Tối đa 180 từ"</i> · <i>"Văn phong chuyên nghiệp B2B, tôn trọng đối tác"</i> · <i>"Có tiêu đề ngắn và CTA hẹn demo 15 phút"</i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Callout -->
+      <div class="callout" style="padding:10px 14px;margin-top:12px;font-size:12px">
+        <span class="ci" data-i="lightbulb"></span>
+        <div>
+          <b>Giáo trình chính thức OpenAI Academy (AI Foundations):</b>
+          Cấu trúc 3 phần <b>Task ➔ Context ➔ Expectation</b> là phương pháp chuẩn mực, tự nhiên và dễ nhớ nhất, giúp người dùng kiểm soát 100% chất lượng bản nháp của ChatGPT.
         </div>
       </div>
     </div>
   </div>
 </section>
-

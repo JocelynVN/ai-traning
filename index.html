@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/chatgpt-badge.svg">
-  <link rel="stylesheet" href="assets/deck.css?v=18">
+  <link rel="stylesheet" href="assets/deck.css?v=20">
   <link rel="preload" href="assets/wir-logo-white.webp" as="image" type="image/webp">
 </head>
 
@@ -22,10 +22,11 @@
   </div>
 
   <script>
-    const TOTAL_PAGES = 20;
-    window.DECK_PAGES = Array.from({ length: TOTAL_PAGES }, (_, i) => `pages/${i + 1}.html`);
+    const TOTAL_PAGES = 19;
+    const DECK_BUILD = Date.now();
+    window.DECK_PAGES = Array.from({ length: TOTAL_PAGES }, (_, i) => `pages/${i + 1}.html?v=${DECK_BUILD}`);
   </script>
-  <script src="assets/deck.js?v=19"></script>
+  <script src="assets/deck.js?v=25"></script>
 </body>
 
 </html>

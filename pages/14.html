@@ -1,46 +1,52 @@
-<section class="slide">
+<section class="slide dense">
   <div class="topbar"></div>
   <div class="pad">
     <div class="head">
-      <h1 class="title">Khai Thác Công Cụ Thực Thi &amp; Custom GPTs</h1>
+      <h1 class="title">Rules và Guardrails Giảm Thiểu Rủi Ro</h1>
     </div>
     <div class="body">
-      <div class="or-split" style="grid-template-columns:40% 60%;gap:18px;align-items:start">
+      <div class="or-split" style="grid-template-columns:43% 57%;gap:18px;align-items:start">
         <div class="or-left">
-          <div class="card" style="padding:12px 15px;border-top:3.5px solid #0284c7;border-radius:10px">
-            <h3 style="font-size:14.5px;color:#0284c7;margin:0 0 5px"><span class="ci" data-i="zap"></span> 1. Tools (Công cụ thực thi)</h3>
-            <p style="font-size:12.8px;line-height:1.48;margin:0;color:var(--body)">Khả năng hành động của ChatGPT: Đọc file Excel, phân tích dữ liệu chuyên sâu (ADA), duyệt Web, phân tích hình ảnh.</p>
-            <div class="tag2" style="font-size:11.8px;margin-top:6px;padding-top:6px"><b>Trả lời:</b> AI có thể làm được gì?</div>
+          <div class="card" style="padding:15px 18px;border-left:4px solid #dc2626;border-radius:10px">
+            <h3 style="font-size:15.5px;color:#dc2626;margin:0 0 6px"><span class="ci" data-i="shield"></span> Rules là gì?</h3>
+            <p style="font-size:13.5px;line-height:1.5;margin:0;color:var(--body)">Rules là các ranh giới thiết lập trong prompt, Custom Instructions hoặc Dự án ChatGPT để ngăn chặn rủi ro có thể đoán trước.</p>
           </div>
 
-          <div class="card" style="padding:12px 15px;border-top:3.5px solid #16a34a;margin-top:10px;border-radius:10px">
-            <h3 style="font-size:14.5px;color:#16a34a;margin:0 0 5px"><span class="ci" data-i="process"></span> 2. Workflow (Kịch bản từng bước)</h3>
-            <p style="font-size:12.8px;line-height:1.48;margin:0;color:var(--body)">Mô tả thứ tự các bước thực hiện, tiêu chuẩn kiểm tra đầu ra và định dạng bảng biểu báo cáo.</p>
-            <div class="tag2" style="font-size:11.8px;margin-top:6px;padding-top:6px"><b>Trả lời:</b> AI nên xử lý theo trình tự nào?</div>
+          <div class="card" style="padding:15px 18px;margin-top:12px;background:#F8FAFC;border:1px solid var(--line);border-radius:10px">
+            <h3 style="font-size:15px;color:var(--ink);margin:0 0 8px"><span class="ci" data-i="info"></span> Rules không thể thay thế</h3>
+            <li style="font-size:13px;line-height:1.5;margin-bottom:6px;color:var(--body)"><b>Phân quyền dữ liệu:</b> Chỉ cấp cho AI dữ liệu được phép dùng.</li>
+            <li style="font-size:13px;line-height:1.5;margin-bottom:6px;color:var(--body)"><b>Tài liệu gốc:</b> Mọi cam kết y khoa/pháp lý phải có tài liệu đối chiếu.</li>
+            <li style="font-size:13px;line-height:1.5;color:var(--body)"><b>Con người phê duyệt:</b> Chịu trách nhiệm cuối cùng trước khi phát hành.</li>
           </div>
 
-          <div class="card" style="padding:12px 15px;border-top:3.5px solid #9333ea;margin-top:10px;border-radius:10px">
-            <h3 style="font-size:14.5px;color:#9333ea;margin:0 0 5px"><span class="ci" data-i="package"></span> 3. Custom GPTs (Đóng gói cho team)</h3>
-            <p style="font-size:12.8px;line-height:1.48;margin:0;color:var(--body)">Đóng gói kịch bản + kích hoạt công cụ + nạp file tài liệu WIR thành trợ lý dùng chung cho phòng ban.</p>
-            <div class="tag2" style="font-size:11.8px;margin-top:6px;padding-top:6px"><b>Trả lời:</b> Làm sao chia sẻ quy trình cho cả team?</div>
-          </div>
-
-          <div class="callout" style="padding:9px 14px;font-size:12.5px;margin-top:10px;border-radius:8px">
-            <span class="ci" data-i="lightbulb"></span>
-            <div><b>Hình dung trực quan:</b> Tool là <i>"đôi tay"</i> (đọc file, tính toán), Workflow là <i>"phương pháp"</i>, Custom GPT là <i>"trợ lý trọn gói"</i>.</div>
+          <div class="callout" style="padding:11px 16px;font-size:13px;margin-top:12px;border-radius:8px">
+            <span class="ci" data-i="shield"></span>
+            <div><b>Không có cam kết tuyệt đối:</b> Rules giúp giảm sai sót nhưng không đảm bảo AI luôn tuân thủ 100%. Luôn cần con người kiểm duyệt.</div>
           </div>
         </div>
 
-        <div class="card card-image"
-          style="padding:10px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.05);max-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <img src="assets/excel-ada-demo.webp"
-            style="max-width:100%;max-height:360px;object-fit:contain;border-radius:6px;display:block"
-            alt="Demo phân tích file Excel với Advanced Data Analysis"
-            loading="lazy"
-            decoding="async">
-          <div
-            style="margin-top:8px;padding:3px 6px;font-size:12px;color:var(--muted2);text-align:center;font-weight:600">
-            Minh họa Tool phân tích dữ liệu (Advanced Data Analysis): Đọc file Excel &amp; vẽ biểu đồ tự động. Nhấp để phóng to.
+        <div class="or-right">
+          <div class="card" style="padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px">
+            <h3 style="font-size:15.5px;color:var(--ink);margin:0 0 10px"><span class="ci" data-i="layers"></span> Bộ quy tắc mẫu cho nhân sự WIR</h3>
+            
+            <div style="background:var(--ok-bg);border:1px solid var(--ok-line);border-left:4px solid var(--ok);padding:12px 15px;border-radius:8px">
+              <b style="font-size:13px;color:#166534">BẮT BUỘC TUÂN THỦ</b>
+              <li style="font-size:12.8px;line-height:1.48;margin-top:6px;color:var(--body)">Chỉ dùng dữ kiện trong tài liệu sản phẩm và chính sách WIR đã phê duyệt.</li>
+              <li style="font-size:12.8px;line-height:1.48;color:var(--body)">Đánh dấu <b>[CẦN XÁC NHẬN]</b> khi thiếu dữ kiện hoặc số liệu.</li>
+              <li style="font-size:12.8px;line-height:1.48;color:var(--body)">Giữ đầu ra ở trạng thái bản nháp cho đến khi cấp quản lý duyệt.</li>
+            </div>
+
+            <div style="background:var(--no-bg);border:1px solid var(--no-line);border-left:4px solid var(--no);padding:12px 15px;border-radius:8px;margin-top:10px">
+              <b style="font-size:13px;color:#991b1b">TUYỆT ĐỐI CẤM</b>
+              <li style="font-size:12.8px;line-height:1.48;margin-top:6px;color:var(--body)">Không quảng cáo thực phẩm bảo vệ sức khỏe như thuốc điều trị.</li>
+              <li style="font-size:12.8px;line-height:1.48;color:var(--body)">Không suy diễn công dụng phục hồi sau thủ thuật khi chưa kiểm chứng.</li>
+              <li style="font-size:12.8px;line-height:1.48;color:var(--body)">Không tự tạo số liệu chiết khấu, giá bán hoặc thông tin khách hàng.</li>
+            </div>
+          </div>
+
+          <div class="callout" style="padding:11px 16px;font-size:13px;margin-top:12px;border-radius:8px">
+            <span class="ci" data-i="check"></span>
+            <div><b>Công thức Rule:</b> Nêu rõ việc phải làm + Cách báo thiếu thông tin + Người phê duyệt cuối.</div>
           </div>
         </div>
       </div>
